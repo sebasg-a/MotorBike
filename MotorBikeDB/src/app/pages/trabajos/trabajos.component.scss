@@ -1,0 +1,106 @@
+$primary-gradient: linear-gradient(to bottom, #d6a12d, darken(#fa9f27, 15%));
+$button-color: #ffffff;
+$button-bg: #d6a12d;
+$button-hover-bg: darken($button-bg, 10%);
+$component-padding: 1.5rem;
+
+.main {
+  margin-left: calc(40vw - (60vw / 2) + 18vw); // Mantiene alineación con sidebar
+  max-width: 60vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 2rem 0;
+
+  // 🔹 Título visual
+  h2 {
+    color: #2e2e2e;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  // 🔹 Contenedor de botones
+  .action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+
+    button {
+      flex: 1 1 160px;
+      max-width: 220px;
+      background-color: $button-bg;
+      color: $button-color;
+      padding: 0.75rem 1rem;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+
+      &:hover {
+        background-color: $button-hover-bg;
+        transform: translateY(-2px);
+      }
+
+      &.active {
+        background: lighten($button-bg, 10%);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+      }
+
+      &.secondary {
+        background-color: #ffffff;
+        color: #d6a12d;
+        border: 2px solid #d6a12d;
+
+        &:hover {
+          background-color: #fff4db;
+        }
+      }
+    }
+  }
+
+  // 🔹 Panel de contenido
+  .component-panel {
+    width: 100%;
+    background: $primary-gradient;
+    border-radius: 12px;
+    padding: $component-padding;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    color: #fff;
+    animation: fadeIn 0.4s ease-in-out;
+
+    // Mejora visual para contenido interno
+    > * {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  // 🔹 Placeholder cuando no hay componentes activos
+  div:has(> div):not(:has(> *:not(div))) {
+    background-color: #f7f7f7;
+    border: 1px dashed #ccc;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+    color: #777;
+    border-radius: 8px;
+  }
+}
+
+// 🔹 Animación fade-in
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,39 @@
+<div class="citas__container">
+  <h2 class="citas__title">Listado de Citas Pendientes</h2>
+
+  <div *ngIf="cargando" class="citas__loading">
+    <div class="spinner"></div>
+    <p>Cargando citas...</p>
+  </div>
+
+  <div *ngIf="!cargando && citas.length === 0" class="citas__empty">
+    <p>No hay citas pendientes por confirmar ✅</p>
+  </div>
+
+  <table *ngIf="!cargando && citas.length > 0" class="citas__table">
+    <thead class="citas__table--header">
+      <tr class="citas__table--header--row">
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Moto</th>
+        <th>Servicio</th>
+        <th>Fecha</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody class="citas__table--body">
+      <tr *ngFor="let cita of citas">
+        <td>{{ cita.id_cita }}</td>
+        <td>{{ cita.nombre_cliente }} {{ cita.apellido_cliente }}</td>
+        <td>{{ cita.placa_moto || 'Sin moto' }}</td>
+        <td>{{ cita.nombre_servicio || 'Sin servicio' }}</td>
+        <td>{{ cita.fecha_cita | date: 'short' }}</td>
+        <td>
+          <button (click)="handleConfirmarCita(cita.id_cita)">
+            Confirmar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

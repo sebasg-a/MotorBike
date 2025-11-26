@@ -1,0 +1,26 @@
+.main {
+    margin-left: calc(40vw - (60vw / 2) + 18vw); /* Centra el 60vw restante */
+    max-width: 60vw; /* Ancho máximo del contenido principal */
+  }
+  .contenedor-botones {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .btn-informe {
+    padding: 12px 25px;
+    background: #ff640a;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .btn-informe:hover {
+    background: #ffd103;
+  }
+  

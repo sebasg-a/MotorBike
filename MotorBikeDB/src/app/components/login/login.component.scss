@@ -1,0 +1,103 @@
+.login__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; // centra verticalmente en pantalla completa
+  background-color: transparent; // fondo neutro suave (puedes dejarlo transparente si quieres)
+}
+
+.login__form--container {
+  background: transparent;
+  padding: 2rem 2.5rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto; // <-- centers horizontally
+
+  display: flex;
+  flex-direction: column;
+  align-items: center; // <-- centers children horizontally
+
+  .login__title {
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    color: #633820; // tu color principal
+  }
+
+  .login__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%; // ensures form takes full width
+
+    .login__form--input {
+      display: flex;
+      flex-direction: column; // ✅ inputs debajo del label, más limpio
+      gap: 0.3rem;
+
+      label {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #391c0f;
+      }
+
+      input {
+        padding: 0.7rem 0.9rem;
+        border: 1px solid #ccc;
+        border-radius: 0.4rem;
+        font-size: 1rem;
+        transition: border-color 0.2s, box-shadow 0.2s;
+
+        &:focus {
+          border-color: #633820;
+          outline: none;
+          box-shadow: 0 0 0 3px rgba(99, 56, 32, 0.2);
+        }
+
+        &.error {
+          border-color: #e74c3c;
+        }
+      }
+    }
+
+    .login__button {
+      margin-top: 1rem;
+      padding: 0.9rem;
+      background-color: #633820; // principal
+      color: white;
+      font-weight: 600;
+      border: none;
+      border-radius: 0.4rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+
+      &:hover {
+        background-color: #391c0f; // hover más oscuro
+      }
+
+      &:disabled {
+        background-color: #aaa;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .additional-options {
+    margin-top: 1rem;
+    text-align: center;
+
+    a {
+      font-size: 0.9rem;
+      color: #633820;
+      text-decoration: none;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #391c0f;
+        text-decoration: underline;
+      }
+    }
+  }
+}

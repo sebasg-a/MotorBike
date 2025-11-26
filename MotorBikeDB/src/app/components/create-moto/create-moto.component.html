@@ -1,0 +1,23 @@
+<div class="moto__container">
+  <div>
+    <h2 class="moto__title">Crear Moto</h2>
+    <form class="moto__form">
+      <div class="moto__form--input">
+        <label class="moto__form--label" for="placa">Placa:</label>
+        <input type="text" id="placa" name="placa" [(ngModel)]="moto.placa_moto" (ngModelChange)="emitChange()" required>
+      </div>
+      <div class="moto__form--input">
+        <label class="moto__form--label" for="marca">Marca:</label>
+        <input type="text" id="marca" name="marca" [(ngModel)]="moto.marca_moto" (ngModelChange)="emitChange()" required>
+      </div>
+      <div class="moto__form--input">
+        <label class="moto__form--label" for="modelo">Modelo:</label>
+        <input type="text" id="modelo" name="modelo" [(ngModel)]="moto.modelo_moto" (ngModelChange)="emitChange()" required>
+      </div>
+      <div class="moto__form--input">
+        <label class="moto__form--label" for="kilometraje">Kilometraje:</label>
+        <input type="number" id="kilometraje" name="kilometraje" [(ngModel)]="moto.kilometraje_moto" (ngModelChange)="emitChange()" required>
+      </div>
+    </form>
+  </div>
+</div>

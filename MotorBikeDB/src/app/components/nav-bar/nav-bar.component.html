@@ -1,0 +1,28 @@
+<div class="navBar__container">
+  <div class="navBar__logo">MotorBikeDB</div>
+  <div class="navBar__links">
+    <a routerLink="/client-register" routerLinkActive="active"
+      >Registro Clientes</a
+    >
+    <a routerLink="/turnos" routerLinkActive="active">Turnos</a>
+    <a routerLink="/trabajos" routerLinkActive="active">Trabajos</a>
+    <a routerLink="/historial" routerLinkActive="active">Historial</a>
+
+
+    <button
+      class="navBar_mecanico"
+      *ngIf="isClientRegisterRoute"
+      (click)="onClickMechanic()"
+    >
+      Registrar Mecánico
+    </button>
+    
+    <button
+      class="navBar_mecanico"
+      *ngIf="isClientRegisterRoute"
+      (click)="onClickClient()"
+    >
+      Registrar cliente
+    </button>
+  </div>
+</div>

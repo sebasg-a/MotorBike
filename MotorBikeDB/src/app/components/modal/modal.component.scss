@@ -1,0 +1,103 @@
+/* Fondo del modal */
+.modal {
+  display: none; /* por defecto oculto */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* fondo oscuro semitransparente */
+  z-index: 1050; /* encima de casi todo */
+  justify-content: center;
+  align-items: center;
+
+  &.is-active {
+    display: flex; /* se muestra cuando is-active */
+  }
+}
+
+/* Contenido del modal */
+.modal-content {
+  background: #fff;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 90%;
+  padding: 2rem;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: fadeInScale 0.3s ease-in-out;
+}
+
+/* Botón de cerrar */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+
+  &:hover {
+    color: #000;
+  }
+}
+
+/* Estilo específico para la sección de recuperar contraseña */
+.forgot-password {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  h2 {
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-size: 1.3rem;
+  }
+
+  input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+
+  button {
+    padding: 0.6rem;
+    background-color: #633820;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #391c0f;
+    }
+  }
+
+  .success {
+    color: green;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .error {
+    color: red;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+}
+
+/* Animación suave */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

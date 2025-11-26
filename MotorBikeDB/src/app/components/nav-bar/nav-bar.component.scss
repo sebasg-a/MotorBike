@@ -1,0 +1,68 @@
+.navBar__container {
+    position: fixed; 
+    top: 0;
+    left: 0; 
+    width: 15vw; /* Ajusta según el ancho de tu NavBar */
+    height: 100vh;
+    border-right:1px solid #dee2e6; 
+    padding: 20px;
+    z-index: 1000; 
+    overflow-y: auto; 
+    background-color: #8a521e;
+  }
+
+.navBar__logo{
+  font-size: large;
+  color: #e9ecef;
+}
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #e9ecef;
+  }
+  
+  li {
+    margin-bottom: 15px;
+    color: #e9ecef;
+  }
+  
+  a {
+    margin-top: 10px;
+    display: block; 
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #e9ecef;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #391c0f;
+    }
+  
+    &.active {
+      background-color: #412b03;
+      color: white;
+    }
+  }
+
+  .navBar_mecanico{
+    margin-top: 10px;
+    width: 100%;
+    display: block; 
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #e9ecef;
+    background-color: transparent;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-align: left;
+    border: none;
+    
+
+    &:hover {
+      background-color: #391c0f;
+    }
+
+  }

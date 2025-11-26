@@ -1,0 +1,31 @@
+<div class="client__container">
+  <div>
+    <h2 class="client__title">Crear Cliente</h2>
+    <form class="client__form">
+      <div class="client__form--input">
+        <label class="client__form--label" for="name">Nombre:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="cliente.nombre_cliente" (ngModelChange)="emitChange()" required>
+      </div>
+      <div class="client__form--input">
+        <label class="client__form--label" for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" [(ngModel)]="cliente.apellido_cliente" (ngModelChange)="emitChange()" required>
+      </div>
+      <div class="client__form--input">
+        <label class="client__form--label" for="cedula">Cédula:</label>
+        <input type="text" id="cedula" name="cedula" [(ngModel)]="cliente.cedula_cliente" (ngModelChange)="emitChange()" required>
+      </div>
+      <div class="client__form--input">
+        <label class="client__form--label" for="email">Email:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="cliente.email_cliente" (ngModelChange)="emitChange()" required>
+      </div>
+      <div class="client__form--input">
+        <label class="client__form--label" for="phone">Teléfono:</label>
+        <input type="tel" id="phone" name="telefono" [(ngModel)]="cliente.telefono_cliente" (ngModelChange)="emitChange()" required>
+      </div>
+      <div class="client__form--input">
+        <label class="client__form--label" for="date">Fecha:</label>
+        <input type="date" id="date" name="fecha" [(ngModel)]="cliente.fecha_registro_cliente" (ngModelChange)="emitChange()" required>
+      </div>
+    </form>
+  </div>
+</div>

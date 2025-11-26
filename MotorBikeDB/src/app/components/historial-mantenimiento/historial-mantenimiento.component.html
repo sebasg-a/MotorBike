@@ -1,0 +1,85 @@
+<div class="historial__container">
+  <h2 class="historial__title">Historial de Mantenimiento</h2>
+
+  <!-- 🔍 Buscador -->
+  <div class="historial__search">
+    <input
+      type="text"
+      placeholder="Buscar por cliente, placa, estado, servicio..."
+      [(ngModel)]="searchTerm"
+      (input)="filtrarHistorial()"
+      class="historial__search--input"
+    />
+  </div>
+
+  <div class="historial__table">
+    <table class="historial__table">
+      <thead class="historial__table--header">
+        <tr class="historial__table--header--row">
+          <th>ID</th>
+          <th>Orden</th>
+          <th>Fecha</th>
+          <th>Detalles Historial</th>
+          <th>Fecha Ingreso</th>
+          <th>Fecha Entrega</th>
+          <th>Estado</th>
+          <th>Placa</th>
+          <th>Marca</th>
+          <th>Modelo</th>
+          <th>Nombre Cliente</th>
+          <th>Apellido Cliente</th>
+          <th>Servicio</th>
+          <th>ID Mecanico</th>
+          <th>Nombre Mecanico</th>
+          <th>Apellido Mecanico</th>
+          <th>Fecha Inicio Servicio</th>
+          <th>Fecha Fin Servicio</th>
+          <th>Descripcion Trabajo</th>
+          <th>Detalles Adicionales</th>
+        </tr>
+      </thead>
+      <tbody class="historial__table--body">
+        <tr *ngFor="let historial of paginatedHistoriales">
+          <td>{{historial.id_historial}}</td>
+          <td>{{historial.id_orden}}</td>
+          <td>{{historial.fecha_historial | date:'short'}}</td>
+          <td>{{historial.detalles_historial}}</td>
+          <td>{{historial.fecha_ingreso_orden | date:'short'}}</td>
+          <td>{{historial.fecha_entrega_orden | date:'short'}}</td>
+          <td>{{historial.estado_orden}}</td>
+          <td>{{historial.placa_moto}}</td>
+          <td>{{historial.marca_moto}}</td>
+          <td>{{historial.modelo_moto}}</td>
+          <td>{{historial.nombre_cliente}}</td>
+          <td>{{historial.apellido_cliente}}</td>
+          <td>{{historial.nombre_servicio}}</td>
+          <td>{{historial.id_mecanico}}</td>
+          <td>{{historial.nombre_mecanico}}</td>
+          <td>{{historial.apellido_mecanico}}</td>
+          <td>{{historial.fecha_inicio_servicio | date:'short'}}</td>
+          <td>{{historial.fecha_fin_servicio | date:'short'}}</td>
+          <td>{{historial.descripcion_trabajo}}</td>
+          <td>{{historial.detalles_adicionales}}</td>
+        </tr>
+
+        <tr *ngIf="!filteredHistoriales.length">
+          <td colspan="20" class="no-data">No hay datos disponibles</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 🔹 Paginación -->
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
+
+    <button
+      *ngFor="let page of pages"
+      (click)="goToPage(page)"
+      [class.active]="page === currentPage">
+      {{ page }}
+    </button>
+
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+  </div>
+</div>

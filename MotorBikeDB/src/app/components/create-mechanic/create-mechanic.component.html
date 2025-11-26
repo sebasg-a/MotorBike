@@ -1,0 +1,28 @@
+<div class="mecanico__container">
+    <div>
+      <h2 class="mecanico__title">Registrar Mecánico</h2>
+      <form class="mecanico__form">
+        <div class="mecanico__form--input">
+          <label class="mecanico__form--label" for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" [(ngModel)]="mecanico.nombre_mecanico" >
+        </div>
+        <div class="mecanico__form--input">
+          <label class="mecanico__form--label" for="apellido">Apellido:</label>
+          <input type="text" id="apellido" name="apellido" [(ngModel)]="mecanico.apellido_mecanico" >
+        </div>
+        <div class="mecanico__form--input">
+          <label class="mecanico__form--label" for="especialidad">Especialidad:</label>
+          <input type="text" id="especialidad" name="especialidad" [(ngModel)]="mecanico.especialidad_mecanico" >
+        </div>
+        <div class="mecanico__form--input">
+          <label class="mecanico__form--label" for="telefono">Teléfono:</label>
+          <input type="tel" id="telefono" name="telefono" [(ngModel)]="mecanico.telefono_mecanico" >
+        </div>
+        <div class="mecanico__form--input">
+          <label class="mecanico__form--label" for="email">Email:</label>
+          <input type="email" id="email" name="email" [(ngModel)]="mecanico.email_mecanico" >
+        </div>
+        <button class="mecanico__form--submit" type="submit" (click)="handleSubmit()" >Guardar Mecánico</button>
+      </form>
+    </div>
+  </div>

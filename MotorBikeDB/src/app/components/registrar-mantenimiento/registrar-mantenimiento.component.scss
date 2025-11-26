@@ -1,0 +1,167 @@
+/* Contenedor principal (antes .mantenimiento__container) */
+.registrar__container {
+  background: linear-gradient(to bottom, #d6a12d, #8b5e00);
+  border-radius: 0.6rem;
+  color: #fff;
+  padding: 2rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.4s ease-in-out;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Título (antes .mantenimiento__title) */
+.registrar__title {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Formulario principal */
+.registrar__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Grupo de inputs (antes .mantenimiento__group) */
+.registrar__form--input {
+  display: flex;
+  flex-direction: column;
+}
+
+.registrar__form--input label,
+.registrar__form--input .appointment__form--label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #fff;
+}
+
+/* Inputs, selects, textarea (equivalente a .mantenimiento__input etc.) */
+.registrar__form input,
+.registrar__form select,
+.registrar__form textarea,
+.appointment__form--select,
+.appointment__form--input input {
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #000;
+  transition: all 0.3s ease;
+}
+
+.registrar__form textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.registrar__form input:focus,
+.registrar__form select:focus,
+.registrar__form textarea:focus,
+.appointment__form--select:focus,
+.appointment__form--input input:focus {
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+  transform: scale(1.01);
+}
+
+/* Botón enviar (antes .mantenimiento__button) */
+.registrar__form--submit,
+.registrar__form button,
+.registrar__form .registrar__form--submit {
+  align-self: center;
+  background-color: #412b03;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.registrar__form--submit:hover,
+.registrar__form button:hover {
+  background-color: #5a3c08;
+  transform: translateY(-2px);
+}
+
+/* Subformulario de cita — grid responsive (usé tus clases appointment__*) */
+.appointment__form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.appointment__form--input {
+  display: flex;
+  flex-direction: column;
+}
+
+.appointment__form--label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #fff;
+}
+
+.appointment__form--select {
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #000;
+  outline: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+/* Mensajes de carga / vacío */
+.registrar__loading,
+.registrar__empty {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: #fff;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Spinner */
+.spinner {
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid #fff;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  margin: 0 auto 1rem auto;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Animaciones */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .registrar__form { gap: 1rem; }
+  .registrar__container { padding: 1rem; }
+  .appointment__form { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,63 @@
+.historial__container {
+    padding: 1rem;
+    min-height: 60vh;
+    background: linear-gradient(to bottom, #d6a12d, darken(#fa9f27, 15%));
+    border-radius: 0.3rem;
+    margin: 10vh auto;
+    overflow-x: auto; /* Agregamos scroll horizontal si la tabla se desborda */
+}
+
+.historial__title {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 600;
+    position: relative;
+}
+
+.historial__table {
+    display: table; /* Cambiamos a display: table para usar table-layout */
+    border-collapse: collapse ;
+    table-layout: fixed; /* Forzamos un layout fijo para controlar el ancho */
+}
+
+.historial__table--header,
+.historial__table--body {
+    display: table-row-group; /* Mantenemos la estructura semántica */
+}
+
+.historial__table--header--row {
+    background-color: #412b03;
+    color: #fff;
+}
+.historial__table--header--row,
+.historial__table--body tr {
+    display: table-row;
+}
+
+.historial__table--header--row th,
+.historial__table--body tr td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; 
+}
+
+.historial__table .historial__table--header--row th:nth-child(1) { width: 3%; } /* ID */
+.historial__table .historial__table--header--row th:nth-child(2) { width: 5%; } /* Orden */
+.historial__table .historial__table--header--row th:nth-child(3) { width: 7%; } /* Fecha */
+.historial__table .historial__table--header--row th:nth-child(4) { width: 15%; } /* Detalles Historial */
+.historial__table .historial__table--header--row th:nth-child(5) { width: 7%; } /* Fecha Ingreso */
+.historial__table .historial__table--header--row th:nth-child(6) { width: 7%; } /* Fecha Entrega */
+.historial__table .historial__table--header--row th:nth-child(7) { width: 5%; } /* Estado */
+.historial__table .historial__table--header--row th:nth-child(8) { width: 5%; } /* Placa */
+.historial__table .historial__table--header--row th:nth-child(9) { width: 5%; } /* Marca */
+.historial__table .historial__table--header--row th:nth-child(10) { width: 5%; } /* Modelo */
+.historial__table .historial__table--header--row th:nth-child(11) { width: 8%; } /* Nombre Cliente */
+.historial__table .historial__table--header--row th:nth-child(12) { width: 8%; } /* Apellido Cliente */
+.historial__table .historial__table--header--row th:nth-child(13) { width: 8%; } /* Servicio */
+.historial__table .historial__table--header--row th:nth-child(14) { width: 4%; } /* ID Mecanico */
+.historial__table .historial__table--header--row th:nth-child(15) { width: 8%; } /* Nombre Mecanico */
+.historial__table .historial__table--header--row th:nth-child(16) { width: 8%; } /* Apellido Mecanico */
+.historial__table .historial__table--header--row th:nth-child(17) { width: 7%; } /* Fecha Inicio Servicio */
+.historial__table .historial__table--header--row th:nth-child(18) { width: 7%; } /* Fecha Fin Servicio */
+.historial__table .historial__table--header--row th:nth-child(19) { width: 15%; } /* Descripcion Trabajo */
+.historial__table .historial__table--header--row th:nth-child(20) { width: 10%; } /* Detalles Adicionales */

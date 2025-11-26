@@ -1,0 +1,26 @@
+<div class="modal" [ngClass]="{ 'is-active': isOpen }">
+  <div class="modal-background" (click)="close()"></div>
+
+  <div class="modal-content">
+    <div class="forgot-password">
+      <h2>Recuperar contraseña</h2>
+
+      <form (ngSubmit)="handleSubmit()">
+        <input
+          type="email"
+          placeholder="Ingresa tu correo"
+          [(ngModel)]="email"
+          name="email"
+          required
+        />
+
+        <button type="submit">Enviar enlace</button>
+      </form>
+
+      <p *ngIf="message" class="success">{{ message }}</p>
+      <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+    </div>
+  </div>
+
+  <button class="modal-close is-large" aria-label="close" (click)="close()"></button>
+</div>

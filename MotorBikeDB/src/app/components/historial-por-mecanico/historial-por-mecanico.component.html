@@ -1,0 +1,47 @@
+<div class="historial__container">
+  <h2 class="historial__title">Historial por Mecánico</h2>
+
+  <form (ngSubmit)="buscarHistorialPorMecanico()" #form="ngForm" class="historial__form">
+    <div class="historial__form--label">
+      <label for="idMecanico">Seleccione un Mecánico:</label>
+      <select id="idMecanico" name="idMecanico" [(ngModel)]="idMecanico" required>
+        <option value="" disabled selected>-- Seleccione un mecánico --</option>
+        <option *ngFor="let mecanico of mecanicos" [value]="mecanico.id_mecanico">
+          {{ mecanico.nombre_mecanico }} {{ mecanico.apellido_mecanico }}
+        </option>
+      </select>
+      <button type="submit">Buscar</button>
+    </div>
+  </form>
+
+  <div *ngIf="trabajos.length > 0" class="historial__table">
+    <table class="historial__table">
+      <thead class="historial__table--header">
+        <tr class="historial__table--header--row">
+          <th>ID Trabajo</th>
+          <th>ID Historial</th>
+          <th>ID Mecánico</th>
+          <th>Fecha Inicio</th>
+          <th>Fecha Fin</th>
+          <th>Descripción</th>
+          <th>Detalles Adicionales</th>
+        </tr>
+      </thead>
+      <tbody class="historial__table--body">
+        <tr *ngFor="let trabajo of trabajos">
+          <td>{{ trabajo.id_trabajo_mecanico }}</td>
+          <td>{{ trabajo.id_historial }}</td>
+          <td>{{ trabajo.id_mecanico }}</td>
+          <td>{{ trabajo.fecha_inicio_servicio }}</td>
+          <td>{{ trabajo.fecha_fin_servicio }}</td>
+          <td>{{ trabajo.descripcion_trabajo }}</td>
+          <td>{{ trabajo.detalles_adicionales }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="trabajos.length === 0 && buscado" class="historial__mensaje">
+    <p>No se encontraron trabajos para este mecánico.</p>
+  </div>
+</div>

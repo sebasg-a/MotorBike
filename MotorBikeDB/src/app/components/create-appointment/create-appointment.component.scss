@@ -1,0 +1,113 @@
+.appointment__container {
+  background: linear-gradient(to bottom, #d6a12d, darken(#fa9f27, 15%));
+  color: #fff;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.appointment__title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+  text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.25);
+}
+
+.appointment__form {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
+}
+
+.appointment__form--input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.3rem;
+  }
+
+  input,
+  select {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #000000;
+    padding: 0.6rem 0.8rem;
+    border: none;
+    border-bottom: 2px solid #633820;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+
+    &:focus {
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.25);
+      border-bottom-color: #fff;
+      transform: translateY(-2px);
+    }
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  // Select con flecha personalizada
+  .appointment__form--select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='18' viewBox='0 0 24 24' width='18' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.8rem center;
+    background-size: 1rem;
+    padding-right: 2rem;
+  }
+}
+
+.appointment__form--submit {
+  background-color: #633820;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  align-self: center;
+  width: 60%;
+
+  &:hover {
+    background-color: darken(#633820, 10%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+// Animación de aparición suave
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

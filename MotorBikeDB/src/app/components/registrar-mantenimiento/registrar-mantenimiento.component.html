@@ -1,0 +1,125 @@
+<div class="registrar__container">
+  <h2 class="registrar__title">Registrar / Finalizar Mantenimiento</h2>
+
+  <form #form="ngForm" class="registrar__form">
+
+    <!-- Selección de orden -->
+    <div class="registrar__form--input">
+      <label for="orden">Orden de trabajo:</label>
+      <select
+        id="orden"
+        name="orden"
+        [(ngModel)]="mantenimiento.id_orden"
+        (change)="onOrdenSeleccionada()"
+        required
+      >
+        <option value="" disabled selected>Seleccione una orden</option>
+        <option *ngFor="let orden of ordenes" [value]="orden.id_orden">
+          {{ orden.id_orden }} - {{ orden.placa_moto }} - {{ orden.nombre_cliente }} {{ orden.apellido_cliente }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Mecánico asignado -->
+    <div class="registrar__form--input" *ngIf="mecanicoNombre">
+      <label>Mecánico asignado:</label>
+      <input type="text" [value]="mecanicoNombre" disabled />
+    </div>
+
+    <!-- Descripción del trabajo -->
+    <div class="registrar__form--input">
+      <label for="descripcion">Descripción del trabajo:</label>
+      <textarea
+        id="descripcion"
+        name="descripcion"
+        [(ngModel)]="mantenimiento.descripcion"
+        placeholder="Describa brevemente el mantenimiento realizado o las tareas a ejecutar"
+        required
+      ></textarea>
+    </div>
+
+    <!-- Costo final -->
+    <div class="registrar__form--input">
+      <label for="costo_final">Costo final del mantenimiento:</label>
+      <input
+        type="number"
+        id="costo_final"
+        name="costo_final"
+        [(ngModel)]="mantenimiento.costo_final"
+        placeholder="Ingrese el costo total"
+        min="0"
+        step="0.01"
+      />
+    </div>
+
+    <!-- Observaciones -->
+    <div class="registrar__form--input">
+      <label for="observaciones">Observaciones:</label>
+      <textarea
+        id="observaciones"
+        name="observaciones"
+        [(ngModel)]="mantenimiento.observaciones"
+        placeholder="Agregue observaciones o notas adicionales (opcional)"
+      ></textarea>
+    </div>
+
+    <div class="registrar__form--input">
+      <input 
+        type="checkbox" 
+        id="incluirCita" 
+        name="incluirCita" 
+        [(ngModel)]="incluirCitaSeguimiento"
+      />
+      <label for="incluirCita">Programar cita de seguimiento</label>
+    </div>
+
+   <div *ngIf="incluirCitaSeguimiento">
+      <div class="appointment__form--input">
+        <label class="appointment__form--label" for="fecha">Fecha:</label>
+        <input
+          type="date"
+          id="fecha"
+          name="fecha"
+          [(ngModel)]="cita.fecha"
+          [min]="minDate"
+          (change)="onFechaChange()"
+          required 
+          />
+      </div>
+
+      <div class="appointment__form--input">
+        <label class="appointment__form--label" for="hora">Hora:</label>
+        <select
+          id="hora"
+          name="hora"
+          [(ngModel)]="cita.hora"
+          required 
+          >
+          <option value="" disabled selected>Seleccione una hora</option>
+          <option *ngFor="let hora of horasDisponibles" [value]="hora">
+            {{ hora }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Botones de acción -->
+    <div class="registrar__form--actions">
+      <button
+        type="button"
+        class="registrar__form--submit iniciar"
+        (click)="registrarMantenimiento()"
+      >
+        Iniciar Mantenimiento
+      </button>
+
+      <button
+        type="button"
+        class="registrar__form--submit finalizar"
+        (click)="finalizarMantenimiento()"
+      >
+        Finalizar Mantenimiento
+      </button>
+    </div>
+  </form>
+</div>

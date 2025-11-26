@@ -1,0 +1,147 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%; /* Asegura que el componente ocupe toda la altura de su padre */
+}
+.password-container {
+  position: relative;
+  
+  .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    
+    .icon {
+      font-style: normal;
+    }
+  }
+  
+input {
+  flex: 1;
+  padding: 0.6rem 0.8rem; /* más cómodo */
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+
+  &:focus {
+    border-color: #633820;
+    box-shadow: 0 0 6px rgba(99,56,32,0.25);
+    outline: none;
+  }
+
+  &.valid {
+    border-color: #28a745; /* verde si es válido */
+  }
+
+  &.invalid {
+    border-color: #d32f2f; /* rojo si es inválido */
+  }
+}
+} /* <-- Add this closing bracket for .password-container */
+
+.input-error {
+  color: #d32f2f;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.register__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #fff;
+  height: 100%; /* Asegura que el contenedor del formulario ocupe toda la altura */
+  overflow-y: auto; /* Añade scroll si el contenido excede la altura */
+}
+
+.register__form--container {
+  flex: 1;
+  padding: 1rem;
+
+  .register__title {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .register__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .register__form--input {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.8rem;
+
+      label {
+        width: 120px;
+        font-weight: bold;
+        margin-right: 1rem;
+      }
+
+      input {
+        flex: 1;
+        padding: 0.3rem;
+        border: 1px solid #ccc;
+        border-radius: 0.3rem;
+      }
+    }
+
+    .register__button {
+      margin-top: 10px;
+      padding: 0.75rem;
+      background-color: #633820;
+      color: white;
+      border: none;
+      border-radius: 0.4rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: 30%;
+      margin: 0 auto;
+
+      &:hover {
+        background-color: #391c0f;
+      }
+    }
+  }
+}
+
+.password-rules {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+
+  span {
+    margin-bottom: 0.2rem;
+    transition: color 0.3s;
+
+    &.valid {
+      color: #28a745; /* verde si cumple */
+    }
+
+    &.invalid {
+      color: #d32f2f; /* rojo si no cumple */
+    }
+  }
+}
+
+  
+  
+  

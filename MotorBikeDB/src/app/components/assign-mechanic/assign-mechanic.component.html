@@ -1,0 +1,41 @@
+<div class="assign__container">
+  <h2 class="assign__title">Asignar Mecánico a una Orden</h2>
+
+  <form class="assign__form">
+    <!-- Selección de orden -->
+    <div class="assign__form--group">
+      <label for="ordenSeleccionada">Seleccionar Orden:</label>
+      <select
+        id="ordenSeleccionada"
+        name="ordenSeleccionada"
+        [(ngModel)]="ordenSeleccionada"
+        required
+      >
+        <option value="" disabled selected>-- Seleccionar Orden --</option>
+        <option *ngFor="let orden of ordenes" [value]="orden.id_orden">
+          Orden #{{ orden.id_orden }} - {{ orden.placa_moto }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Selección de mecánico -->
+    <div class="assign__form--group">
+      <label for="mecanicoSeleccionado">Seleccionar Mecánico:</label>
+      <select
+        id="mecanicoSeleccionado"
+        name="mecanicoSeleccionado"
+        [(ngModel)]="mecanicoSeleccionado"
+        required
+      >
+        <option value="" disabled selected>-- Seleccionar Mecánico --</option>
+        <option *ngFor="let mec of mecanicos" [value]="mec.id_mecanico">
+          {{ mec.nombre_mecanico }} {{ mec.apellido_mecanico }}
+        </option>
+      </select>
+    </div>
+
+    <button class="assign__form--button" type="button" (click)="asignarMecanico()">
+      Asignar Mecánico
+    </button>
+  </form>
+</div>

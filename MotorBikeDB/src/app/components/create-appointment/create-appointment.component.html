@@ -1,0 +1,96 @@
+<div class="appointment__container">
+  <div>
+    <h2 class="appointment__title">Asignar Turno</h2>
+    <form class="appointment__form" (ngSubmit)="handleSubmit()" #form="ngForm">
+      <!-- Cliente -->
+      <div class="appointment__form--input">
+        <label class="appointment__form--label" for="cliente">Cliente</label>
+        <select
+          class="appointment__form--select"
+          [(ngModel)]="cita.cedula_cliente"
+          name="cliente"
+          id="cliente"
+          (change)="filtrarMotos(cita.cedula_cliente)"
+          required
+        >
+          <option value="" disabled selected>Seleccione un cliente</option>
+          <option *ngFor="let cliente of clientes" [value]="cliente.cedula_cliente">
+            {{ cliente.nombre_cliente }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Moto -->
+      <div class="appointment__form--input">
+        <label class="appointment__form--label" for="moto">Moto</label>
+        <select
+          class="appointment__form--select"
+          [(ngModel)]="cita.placa_moto"
+          name="moto"
+          id="moto"
+          required
+        >
+          <option value="" disabled selected>Seleccione una moto</option>
+          <option *ngFor="let moto of motosClienteSeleccionado" [value]="moto.placa_moto">
+            {{ moto.placa_moto }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Servicio -->
+      <div class="appointment__form--input">
+        <label class="appointment__form--label" for="servicio">Servicio</label>
+        <select
+          class="appointment__form--select"
+          [(ngModel)]="cita.id_servicio"
+          name="servicio"
+          id="servicio"
+          required
+        >
+          <option value="" disabled selected>Seleccione un servicio</option>
+          <option *ngFor="let servicio of servicios" [value]="servicio.id_servicio">
+            {{ servicio.nombre_servicio }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Fecha -->
+      <div class="appointment__form--input">
+        <label class="appointment__form--label" for="fecha">Fecha</label>
+        <input
+          type="date"
+          id="fecha"
+          name="fecha"
+          [(ngModel)]="cita.fecha"
+          [min]="minDate"
+          (change)="onFechaChange()"
+          required
+        />
+      </div>
+
+      <!-- Hora -->
+      <div class="appointment__form--input">
+        <label class="appointment__form--label" for="hora">Hora</label>
+        <select
+          class="appointment__form--select"
+          id="hora"
+          name="hora"
+          [(ngModel)]="cita.hora"
+          required
+        >
+          <option value="" disabled selected>Seleccione una hora</option>
+          <option *ngFor="let hora of horasDisponibles" [value]="hora">
+            {{ hora }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Botón enviar -->
+      <div class="appointment__form--input">
+        <button type="submit" class="appointment__form--submit">
+          Guardar Turno
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

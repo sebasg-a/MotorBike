@@ -1,0 +1,49 @@
+.login-register-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  margin: 5px auto; 
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to bottom, #d6a12d, darken(#fa9f27, 15%));
+}
+
+.form-container {
+  display: flex;
+  width: 200%; /* El doble del ancho para contener ambos formularios uno al lado del otro */
+  transition: transform 0.5s ease-in-out;
+}
+.login-component{
+  margin: auto;
+}
+.login-component,
+.register-component {
+  width: 50%;
+  flex-shrink: 0; /* Evita que los formularios se encojan */
+}
+
+.show-register {
+  transform: translateX(-50%); /* Desplaza el contenedor para mostrar el formulario de registro */
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 0px;
+}
+
+button {
+  padding: 1rem;
+  border: none;
+  background-color: #777777;
+  color: #333;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 0.4rem;
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
+}

@@ -1,0 +1,31 @@
+<div class="main">
+  <app-nav-bar 
+    (toggleMechanicForm)="toggleMechanicForm()" 
+    (toggleClientForm)="toggleClientForm()">
+  </app-nav-bar>
+
+  <div *ngIf="showClientForm && !showMechanicForm"> 
+    <div class="create__container">
+      <app-create-client (clienteChange)="clienteSeleccionado = $event"></app-create-client>
+      <app-create-moto (motoChange)="motoSeleccionada = $event"></app-create-moto>
+    </div>
+
+    <!-- Botón para crear nuevo cliente con su moto -->
+    <button type="submit" class="create__button" (click)="handleSubmit()">Guardar Cliente</button>
+    
+    <!-- Selección de cliente existente -->
+    <div class="select__container">
+      <label for="clienteExistente">Seleccionar Cliente Existente:</label>
+      <select id="clienteExistente" [(ngModel)]="clienteSeleccionado" name="clienteExistente">
+        <option *ngFor="let cliente of clientes" [ngValue]="cliente">
+          {{ cliente.cedula_cliente }} - {{ cliente.nombre_cliente }} {{ cliente.apellido_cliente }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Botón para agregar moto a un cliente existente -->
+    <button type="button" class="create__button" (click)="handleAddMoto()">Agregar Moto a Cliente</button>
+  </div>
+
+  <app-create-mechanic *ngIf="showMechanicForm"></app-create-mechanic>
+</div>

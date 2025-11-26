@@ -1,0 +1,63 @@
+.mecanico__container{
+    padding: 1rem;
+    min-height: 60vh;
+    display: block;
+    background: linear-gradient(to bottom, #d6a12d, darken(#fa9f27, 15%));
+    width: 60%;
+    margin: 10vh auto;
+}
+
+.mecanico__title{
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.mecanico__form{
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.mecanico__form--input{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+    justify-content: space-between;
+  
+    label {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+  
+    input,select {
+      background-color: transparent;
+      padding: 0.2rem; /* Ajusté el padding vertical para dar espacio a la barra inferior */
+      border: none;
+      border-bottom: 2px solid #633820; /* Barra inferior */
+      border-radius: 0.1rem; /* Eliminar bordes redondeados */
+      transition: border-bottom-color 0.3s ease; /* Transición suave para el color de la barra */
+      box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.2); /* Sombra hacia abajo y a la derecha */
+      box-shadow: -3px 5px 10px rgba(0, 0, 0, 0.2);/* Sombra para el input */
+    }
+}
+
+.mecanico__form--submit{
+    margin-top: 10px;
+    width: 30%;
+    padding: 5px;
+    border-radius: 0.3rem;
+    border: none;
+    background-color: #391c0f;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    color: #e9ecef;
+}
