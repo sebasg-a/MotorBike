@@ -12,22 +12,54 @@ export class InformesService {
 
   constructor() {}
 
-  generarInformeMotos(motoData: any) {
+  generarInformeMotos(motos: any[]) {
+
+    const content = [
+      { text: 'INFORME DE MOTOS', style: 'header' },
+      { text: '\n' }
+    ];
+  
+    motos.forEach(m => {
+      content.push(
+        { text: `📌 Moto: ${m.placa_moto}`, style: 'sub' },
+        { text: `Marca: ${m.marca_moto}` },
+        { text: `Modelo: ${m.modelo_moto}` },
+        { text: `Kilometraje: ${m.kilometraje_moto}` },
+        { text: '\n' }
+      );
+    });
+  
+    const docDefinition = {
+      content,
+      styles: {
+        header: { fontSize: 22, bold: true },
+        sub: { fontSize: 16, bold: true }
+      }
+    };
+  
+    pdfMake.createPdf(docDefinition).open();
+  }
+  
+
+  generarInformeTrabajador(mecanicos: any[]) {
 
     const docDefinition: any = {
       content: [
-        { text: 'Informe de Moto', style: 'header' },
+        { text: 'Informe de Mecánicos', style: 'header' },
         { text: ' ' },
-        { text: `Placa: ${motoData.placa}` },
-        { text: `Marca: ${motoData.marca}` },
-        { text: `Modelo: ${motoData.modelo}` },
-        { text: `Kilometraje: ${motoData.kilometraje}` },
-        { text: `Cliente: ${motoData.cliente}` },
-        { text: `Servicios:` },
-        {
-          ul: motoData.servicios.map((s: any) => `${s.fecha} - ${s.descripcion}`)
-        }
+  
+        ...mecanicos.map(m => ({
+          stack: [
+            { text: `ID: ${m.id_mecanico}` },
+            { text: `Nombre: ${m.nombre_mecanico} ${m.apellido_mecanico}` },
+            { text: `Especialidad: ${m.especialidad_mecanico}` },
+            { text: `Teléfono: ${m.telefono_mecanico}` },
+            { text: `Email: ${m.email_mecanico}` },
+            { text: ' ' }
+          ]
+        }))
       ],
+  
       styles: {
         header: {
           fontSize: 22,
@@ -35,32 +67,12 @@ export class InformesService {
         }
       }
     };
-
-    pdfMake.createPdf(docDefinition).download();
+  
+    pdfMake.createPdf(docDefinition).open();
   }
-
-  generarInformeTrabajador(trabajadorData: any) {
-
-    const docDefinition: any = {
-      content: [
-        { text: 'Informe del Mecanico', style: 'header' },
-        { text: ' ' },
-        { text: `Nombre: ${trabajadorData.nombre}` },
-        { text: `Cédula: ${trabajadorData.cedula}` },
-        { text: `Total Servicios Realizados:` },
-        {
-          ul: trabajadorData.servicios.map((s: any) => `${s.fecha} - ${s.descripcion}`)
-        }
-      ],
-      styles: {
-        header: {
-          fontSize: 22,
-          bold: true
-        }
-      }
-    };
-
-    pdfMake.createPdf(docDefinition).download();
-  }
+  
+  
+  
+  
 
 }

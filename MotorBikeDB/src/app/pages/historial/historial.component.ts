@@ -3,6 +3,8 @@ import { NavBarComponent } from '../../components/nav-bar/nav-bar.component';
 import { HistorialMantenimientoComponent } from '../../components/historial-mantenimiento/historial-mantenimiento.component';
 import { HistorialPorMecanicoComponent } from '../../components/historial-por-mecanico/historial-por-mecanico.component';
 import { InformesService } from '../../services/informes.service';
+import { MotoService } from '../../services/moto.service';
+import { MecanicoService } from '../../services/mecanico.service';
 
 @Component({
   selector: 'app-historial',
@@ -12,34 +14,57 @@ import { InformesService } from '../../services/informes.service';
 })
 export class HistorialComponent {
 
-  constructor(private informesService: InformesService) {}
+  constructor(private informesService: InformesService,
+    private motoService: MotoService,
+    private mecanicoService: MecanicoService
+  ) {}
 
   generarPDFMotos() {
-    const motoDemo = {
-      placa: "ABC123",
-      marca: "Yamaha",
-      modelo: "FZ16",
-      kilometraje: 23400,
-      cliente: "Juan Pérez",
-      servicios: [
-        { fecha: "2024-07-01", descripcion: "Cambio de aceite" },
-        { fecha: "2024-07-15", descripcion: "Revisión general" }
-      ]
-    };
+    
+    // 1. Llamar a la BD
+    this.motoService.obtenerMotos().subscribe(
+      motos => {
 
-    this.informesService.generarInformeMotos(motoDemo);
+        if (!motos || motos.length === 0) {
+          alert("No hay motos registradas.");
+          return;
+        }
+
+        // 2. Enviar los datos reales al servicio del PDF
+        this.informesService.generarInformeMotos(motos);
+
+      },
+      error => {
+        console.error("Error obteniendo motos:", error);
+        alert("Error al obtener datos de las motos");
+      }
+    );
   }
+
 
   generarPDFTrabajador() {
-    const dataTrabajadorDemo = {
-      nombre: "Carlos López",
-      cedula: "123456789",
-      servicios: [
-        { fecha: "2024-08-01", descripcion: "Cambio de aceite - Moto ABC123" },
-        { fecha: "2024-08-10", descripcion: "Sincronización - Moto XYZ987" }
-      ]
-    };
 
-    this.informesService.generarInformeTrabajador(dataTrabajadorDemo);
+    this.mecanicoService.obtenerMecanicos().subscribe(
+      mecanicos => {
+  
+        if (!mecanicos || mecanicos.length === 0) {
+          alert("No hay mecánicos registrados.");
+          return;
+        }
+  
+        // Aquí enviamos TODOS los mecánicos al PDF
+        this.informesService.generarInformeTrabajador(mecanicos);
+  
+      },
+      error => {
+        console.error("Error obteniendo mecánicos:", error);
+        alert("Error al obtener los datos de los mecánicos.");
+      }
+    );
   }
+  
+  
+  
+
+  
 }

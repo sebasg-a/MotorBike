@@ -29,8 +29,11 @@ export class HistorialMantenimientoComponent implements OnInit {
   cargarHistorial() {
     this.historialService.obtenerHistorialCompleto().subscribe(
       historiales => {
+  
+        console.log("📌 DATOS REALES DESDE FIREBASE:", historiales);
+  
         this.historiales = historiales;
-        this.filteredHistoriales = historiales; // Inicialmente todos
+        this.filteredHistoriales = historiales;
         this.updatePaginatedHistoriales();
       },
       error => {
@@ -39,6 +42,7 @@ export class HistorialMantenimientoComponent implements OnInit {
       }
     );
   }
+  
 
   // 🔍 Filtrar resultados según el término de búsqueda
   filtrarHistorial() {
